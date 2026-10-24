@@ -1,0 +1,31 @@
+# Configuración COMÚN a todos los perfiles - shipment-service
+# Sin secretos: usuario/clave de BD y claves JWT llegan por variables de entorno.
+spring:
+  application:
+    name: shipment-service
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    root: INFO
+
+logitrack:
+  security:
+    jwt:
+      issuer: logitrack-security-service
+      # Ruta a la clave pública RS256 (la ruta viene del entorno; el archivo de la clave NO va en Git)
+      public-key-location: ${JWT_PUBLIC_KEY_LOCATION}

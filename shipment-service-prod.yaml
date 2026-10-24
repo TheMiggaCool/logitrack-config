@@ -1,0 +1,17 @@
+# Perfil prod - shipment-service (contenedores: NUNCA localhost entre servicios)
+spring:
+  datasource:
+    # Obligatoria: si falta DB_URL el servicio no arranca (falla rápido y claro)
+    url: ${DB_URL}
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.logitrack: INFO
+
+logitrack:
+  clients:
+    courier:
+      # Nombre del servicio en la red de Docker Compose
+      base-url: ${COURIER_SERVICE_URL:http://courier-service:8082}

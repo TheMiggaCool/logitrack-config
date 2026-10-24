@@ -1,0 +1,10 @@
+# Perfil prod - courier-service (contenedores)
+spring:
+  datasource:
+    url: ${DB_URL}
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.logitrack: INFO

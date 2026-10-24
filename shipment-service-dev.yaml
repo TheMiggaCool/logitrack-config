@@ -1,0 +1,15 @@
+# Perfil dev - shipment-service (ejecución desde el IDE, con defaults a localhost)
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/shipment_db}
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com.logitrack: DEBUG
+
+logitrack:
+  clients:
+    courier:
+      base-url: ${COURIER_SERVICE_URL:http://localhost:8082}

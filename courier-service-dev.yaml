@@ -1,0 +1,10 @@
+# Perfil dev - courier-service (ejecución desde el IDE)
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/courier_db}
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com.logitrack: DEBUG

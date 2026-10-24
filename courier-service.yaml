@@ -1,0 +1,29 @@
+# Configuración COMÚN a todos los perfiles - courier-service
+spring:
+  application:
+    name: courier-service
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    root: INFO
+
+logitrack:
+  security:
+    jwt:
+      issuer: logitrack-security-service
+      public-key-location: ${JWT_PUBLIC_KEY_LOCATION}

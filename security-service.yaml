@@ -1,0 +1,32 @@
+# Configuración COMÚN a todos los perfiles - security-service
+spring:
+  application:
+    name: security-service
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    root: INFO
+
+logitrack:
+  security:
+    jwt:
+      issuer: logitrack-security-service
+      access-token-ttl-minutes: 60
+      # Solo las RUTAS vienen del entorno; los archivos de clave NO van en Git
+      private-key-location: ${JWT_PRIVATE_KEY_LOCATION}
+      public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
