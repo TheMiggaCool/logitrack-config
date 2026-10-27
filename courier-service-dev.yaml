@@ -5,6 +5,11 @@ spring:
   jpa:
     show-sql: true
 
+logitrack:
+  clients:
+    security:
+      base-url: ${SECURITY_SERVICE_URL:http://localhost:8081}
+
 logging:
   level:
     com.logitrack: DEBUG
