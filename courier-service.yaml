@@ -8,6 +8,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  # Sección agregada en último commit
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
 
 server:
   port: 8082
