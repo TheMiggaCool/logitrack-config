@@ -10,8 +10,7 @@ logging:
   level:
     com.logitrack: INFO
 
-logitrack:
-  clients:
-    courier:
-      # Nombre del servicio en la red de Docker Compose
-      base-url: ${COURIER_SERVICE_URL:http://courier-service:8082}
+courier:
+  service:
+    # Nombre del servicio en la red de Docker Compose
+    url: ${COURIER_SERVICE_URL:http://courier-service:8082}
