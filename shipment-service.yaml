@@ -26,6 +26,6 @@ logging:
 logitrack:
   security:
     jwt:
-      issuer: logitrack-security-service
+      issuer: logitrack-security
       # Ruta a la clave pública RS256 (la ruta viene del entorno; el archivo de la clave NO va en Git)
       public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
