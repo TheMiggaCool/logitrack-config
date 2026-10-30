@@ -25,5 +25,5 @@ logging:
 logitrack:
   security:
     jwt:
-      issuer: logitrack-security-service
+      issuer: logitrack-security
       public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
