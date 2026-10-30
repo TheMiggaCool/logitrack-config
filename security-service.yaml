@@ -25,7 +25,7 @@ logging:
 logitrack:
   security:
     jwt:
-      issuer: logitrack-security-service
+      issuer: logitrack-security
       access-token-ttl-minutes: 60
       # Solo las RUTAS vienen del entorno; los archivos de clave NO van en Git
       private-key-location: ${JWT_PRIVATE_KEY_LOCATION}
