@@ -8,7 +8,7 @@ spring:
     password: ${DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 
 server:
   port: 8083
@@ -23,9 +23,8 @@ logging:
   level:
     root: INFO
 
-logitrack:
-  security:
-    jwt:
-      issuer: logitrack-security-service
-      # Ruta a la clave pública RS256 (la ruta viene del entorno; el archivo de la clave NO va en Git)
-      public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
+security:
+  jwt:
+    issuer: ${JWT_ISSUER:logitrack-security}
+    public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
+
