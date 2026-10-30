@@ -7,7 +7,7 @@ spring:
     password: ${DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${JPA_DDL_AUTO:validate}
 
 server:
   port: 8081
@@ -22,11 +22,8 @@ logging:
   level:
     root: INFO
 
-logitrack:
-  security:
-    jwt:
-      issuer: logitrack-security
-      access-token-ttl-minutes: 60
-      # Solo las RUTAS vienen del entorno; los archivos de clave NO van en Git
-      private-key-location: ${JWT_PRIVATE_KEY_LOCATION}
-      public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
+security:
+  jwt:
+    issuer: ${JWT_ISSUER:logitrack-security}
+    private-key-path: ${JWT_PRIVATE_KEY_LOCATION}
+    public-key-path: ${JWT_PUBLIC_KEY_LOCATION}
