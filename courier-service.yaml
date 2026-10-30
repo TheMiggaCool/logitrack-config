@@ -7,7 +7,12 @@ spring:
     password: ${DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${JPA_DDL_AUTO:update}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
 
 server:
   port: 8082
@@ -22,8 +27,4 @@ logging:
   level:
     root: INFO
 
-logitrack:
-  security:
-    jwt:
-      issuer: logitrack-security
-      public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
+
