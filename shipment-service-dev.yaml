@@ -9,7 +9,6 @@ logging:
   level:
     com.logitrack: DEBUG
 
-logitrack:
-  clients:
-    courier:
-      base-url: ${COURIER_SERVICE_URL:http://localhost:8082}
+courier:
+  service:
+    url: ${COURIER_SERVICE_URL:http://localhost:8082}
