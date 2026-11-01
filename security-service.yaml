@@ -27,3 +27,12 @@ security:
     issuer: ${JWT_ISSUER:logitrack-security}
     private-key-path: ${JWT_PRIVATE_KEY_LOCATION}
     public-key-path: ${JWT_PUBLIC_KEY_LOCATION}
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8065/eureka/}
+  instance:
+    prefer-ip-address: true

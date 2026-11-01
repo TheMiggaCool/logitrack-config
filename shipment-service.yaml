@@ -9,6 +9,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+      client:
+        config:
+          courier-service:
+            connectTimeout: 2000
+            readTimeout: 3000
 
 server:
   port: 8083
@@ -28,3 +37,11 @@ security:
     issuer: ${JWT_ISSUER:logitrack-security}
     public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8065/eureka/}
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,17 @@
+server:
+  port: 8065
+
+eureka:
+  instance:
+    hostname: eureka-server
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-server:8065/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

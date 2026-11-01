@@ -1,0 +1,47 @@
+server:
+  port: 8066
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: false
+          routes:
+            - id: security-route
+              uri: lb://SECURITY-SERVICE
+              predicates:
+                - Path=/api/v1/auth,/api/v1/auth/**,/api/v1/users,/api/v1/users/**
+              filters:
+                - StripPrefix=2
+            - id: courier-route
+              uri: lb://COURIER-SERVICE
+              predicates:
+                - Path=/api/v1/couriers,/api/v1/couriers/**
+              filters:
+                - StripPrefix=2
+            - id: shipment-route
+              uri: lb://SHIPMENT-SERVICE
+              predicates:
+                - Path=/api/v1/shipments,/api/v1/shipments/**
+              filters:
+                - 'RewritePath=^/api/v1/shipments(?<segment>/.*)?$, /envios$\{segment}'
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8065/eureka/}
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

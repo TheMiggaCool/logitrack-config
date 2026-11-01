@@ -27,4 +27,11 @@ logging:
   level:
     root: INFO
 
-
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8065/eureka/}
+  instance:
+    prefer-ip-address: true
